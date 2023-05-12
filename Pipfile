@@ -9,6 +9,8 @@ coverage = "*"
 pytest = "*"
 pandas = "*"
 seaborn = "*"
+djangorestframework = "*"
+psycopg2 = "*"
 
 [dev-packages]
 
