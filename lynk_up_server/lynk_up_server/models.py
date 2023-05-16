@@ -12,7 +12,7 @@ class User(models.Model):
     return self.user_name
 
 
-class Friend(models.Model):
+class FriendsList(models.Model):
   user = models.ForeignKey(User, on_delete=models.CASCADE)
   friend_id = models.IntegerField()
 
