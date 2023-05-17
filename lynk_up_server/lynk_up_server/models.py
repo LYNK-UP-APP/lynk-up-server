@@ -1,4 +1,6 @@
 from django.db import models
+from django.conf import settings
+from django.utils import timezone
 
 class User(models.Model):
   user_name = models.CharField(max_length=20, unique=True)
@@ -13,16 +15,24 @@ class User(models.Model):
 
 
 class FriendsList(models.Model):
-  user = models.ForeignKey(User, on_delete=models.CASCADE)
-  friend_id = models.IntegerField()
+  user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="user")
+  friends = models.ManyToManyField(settings.AUTH_USER_MODEL, blank=True, related_name="friends")
 
   updated = models.DateTimeField(auto_now=True)
   created = models.DateTimeField(auto_now_add=True)
 
+  def __str__(self):
+    return self.user.user_name
+
+  def add_friend(self, account):
+    if not account in self.friends.all():
+      self.friends.add(account)
+      self.save
 
 class Group(models.Model):
-  friends = models.ManyToManyField(Friend)
+  friends = models.ManyToManyField(FriendsList)
   name = models.CharField(max_length=40)
+  user = models.ForeignKey(User, on_delete=models.CASCADE)
 
   updated = models.DateTimeField(auto_now=True)
   created = models.DateTimeField(auto_now_add=True)
