@@ -6,7 +6,7 @@ from django.utils import timezone
 
 class User(models.Model):
   user_name = models.CharField(max_length=20, unique=True)
-  phone_number = models.CharField(max_length=12, unique=True)
+  phone_number = models.CharField(min_length=12, unique=True)
   full_name = models.CharField(max_length=40)
 
   updated = models.DateTimeField(auto_now=True)
