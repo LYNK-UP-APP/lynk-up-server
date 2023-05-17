@@ -9,7 +9,6 @@ https://docs.djangoproject.com/en/4.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
-
 from pathlib import Path
 from dotenv import load_dotenv
 import os
@@ -129,4 +128,4 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Ensures that references to the custom User model is not crossing over with the built-in User model
 
-AUTH_USER_MODEL = 'lynk_up_server.User'
+# AUTH_USER_MODEL = 'lynk_up_server.User'

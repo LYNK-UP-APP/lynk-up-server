@@ -1,4 +1,6 @@
-from django.db import models
+# for a pre-authenticated user model
+from django.contrib.auth.models import models
+# from django.db import models
 from django.conf import settings
 from django.utils import timezone
 
@@ -14,7 +16,7 @@ class User(models.Model):
     return self.user_name
 
 
-class FriendsList(models.Model):
+class FriendList(models.Model):
   user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="user")
   friends = models.ManyToManyField(settings.AUTH_USER_MODEL, blank=True, related_name="friends")
 
@@ -30,9 +32,9 @@ class FriendsList(models.Model):
       self.save
 
 class Group(models.Model):
-  friends = models.ManyToManyField(FriendsList)
+  friends = models.ManyToManyField(FriendList)
   name = models.CharField(max_length=40)
-  user = models.ForeignKey(User, on_delete=models.CASCADE)
+  user = models.ForeignKey(User, on_delete=models.CASCADE, default=None)
 
   updated = models.DateTimeField(auto_now=True)
   created = models.DateTimeField(auto_now_add=True)
