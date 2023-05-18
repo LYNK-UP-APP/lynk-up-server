@@ -19,7 +19,7 @@ class FriendsList(models.Model):
   from .models import User
 
   user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="user")
-  friends = models.ManyToManyField(User, blank=True, related_name="friends")
+  friends = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, related_name="friends")
 
   updated = models.DateTimeField(auto_now=True)
   created = models.DateTimeField(auto_now_add=True)
