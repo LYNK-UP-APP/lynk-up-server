@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import User, Friend, Group, Event
+from .models import User, FriendsList, Group, Event
 
 class EventSerializer(serializers.ModelSerializer):
   class Meta:

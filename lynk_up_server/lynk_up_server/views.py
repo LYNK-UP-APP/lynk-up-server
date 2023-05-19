@@ -1,4 +1,4 @@
-from .models import User, Friend, Group, Event
+from .models import User, FriendsList, Group, Event
 from .serializers import UserSerializer, EventSerializer, GroupSerializer
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
