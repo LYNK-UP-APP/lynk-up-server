@@ -13,6 +13,8 @@ jobs:
   run-tests:
     docker:
       - image: circleci/python:3.10
+    environment:
+      - DJANGO_SETTINGS_MODULE: "lynk_up_server.settings"
     steps:
       - checkout
       - run:
